@@ -1,4 +1,10 @@
-/* Loveable-inspired, GitHub Pages-ready */
+/
+html{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+* Loveable-inspired, GitHub Pages-ready */
 :root{
   --bg: #fbf7f2;
   --card: rgba(255,255,255,.65);
@@ -11,7 +17,7 @@
   --accent: #d28a63;
   --max: 1120px;
   --radius: 28px;
-  --serif: "Fraunces", ui-serif, Georgia, serif;
+  --serif: "Playfair Display", ui-serif, Georgia, serif;
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
@@ -155,7 +161,7 @@ ul{margin:0; padding-left: 18px}
   font-size: 64px;
   line-height: 1.02;
   margin: 18px 0 12px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 .accent{ color: var(--accent); }
 
@@ -204,7 +210,7 @@ ul{margin:0; padding-left: 18px}
   font-family: var(--serif);
   font-size: 44px;
   margin: 0 0 14px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 .section-head p{
   margin:0;
@@ -275,7 +281,7 @@ ul{margin:0; padding-left: 18px}
   font-family: var(--serif);
   font-size: 42px;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
   background: linear-gradient(135deg, var(--accent), rgba(18,24,38,.85));
   -webkit-background-clip: text;
   background-clip: text;
@@ -325,9 +331,9 @@ ul{margin:0; padding-left: 18px}
   font-size: 12px;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(210,138,99,.14);
-  color: rgba(18,24,38,.78);
-  border: 1px solid rgba(210,138,99,.20);
+  background: rgba(210,138,99,.22);
+  color: rgba(18,24,38,.82);
+  border: 1px solid rgba(210,138,99,.30);
 }
 .date{font-size: 12px; color: rgba(18,24,38,.60)}
 .role-title{
@@ -462,4 +468,20 @@ ul{margin:0; padding-left: 18px}
   }
   .nav.open{display:flex}
   .nav a{width:100%}
+}
+
+/* icons */
+.icon{
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: -3px;
+  margin-right: 8px;
+  color: rgba(18,24,38,.65);
+}
+.btn .icon{ color: currentColor; opacity: .9; }
+.meta .icon{ opacity: .75; }
+
+h1,h2,h3{
+  font-feature-settings: "kern" 1, "liga" 1;
 }
