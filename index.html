@@ -12,14 +12,153 @@
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://joshuaonofrio.com"/>
   
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/favicon.png"/>
+  
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
   <link href="styles.css" rel="stylesheet"/>
+  
+  <style>
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 48px;
+      height: 48px;
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background: #333;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+    
+    .back-to-top svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    /* Image fade-in animations */
+    img {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-in forwards;
+    }
+    
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+    
+    /* Enhanced button hover effects */
+    .btn {
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    .btn.primary:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    
+    /* Testimonials section */
+    .testimonials {
+      margin-top: 4rem;
+    }
+    
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .testimonial-card {
+      background: #f9f9f9;
+      border-left: 4px solid #1a1a1a;
+      padding: 1.5rem;
+      border-radius: 8px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    
+    .testimonial-quote {
+      font-style: italic;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    
+    .testimonial-author {
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 0.25rem;
+    }
+    
+    .testimonial-role {
+      font-size: 0.85rem;
+      color: #666;
+      line-height: 1.4;
+    }
+    
+    @media (max-width: 768px) {
+      .back-to-top {
+        bottom: 1rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+      }
+      
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
 
 <header class="site-header">
   <div class="container header-inner">
@@ -32,6 +171,7 @@
     <nav class="nav" id="site-nav">
       <a href="#about">About</a>
       <a href="#experience">Experience</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#life">Life</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -280,6 +420,42 @@
   </div>
 </section>
 
+<!-- TESTIMONIALS -->
+<section class="section section-card" id="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <h2>What People Say</h2>
+      <p>Recommendations from colleagues and clients I've worked with.</p>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "I had the absolute pleasure of working with Joshua for almost 5 years at ActualTech Media and then with Future B2B. His writing skills are second-to-none. Joshua writes some of the best marketing, outreach, outbound or inbound copy I have ever read. He can turn what I thought was pretty good copy, into stellar, highly readable, and most importantly, high converting copy. I have absolutely no reservations in recommending Joshua to any and all B2B organizations with a marketing department - Joshua will knock your socks off!"
+        </p>
+        <div class="testimonial-author">Ainsley Muller</div>
+        <div class="testimonial-role">Marketing Director | Growth & Demand Gen Leader | B2B Tech</div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "I had the opportunity to work closely with Joshua and consistently found him to be a highly capable, dependable, and thoughtful professional. Joshua brings a strong sense of ownership to his work, paired with clear communication and follow-through. He approaches challenges strategically, balances execution with accountability, and clearly communicates throughout the process. Joshua consistently delivered with professionalism and care. His follow-through makes him someone leaders can rely on, and I would confidently recommend him to any organization looking for a steady, results-driven well-rounded marketer."
+        </p>
+        <div class="testimonial-author">Shana Murik</div>
+        <div class="testimonial-role">Marketing & Audience Growth Leader | B2B Digital Strategy</div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-quote">
+          "He was instrumental in producing email copies and sharing reports, consistently demonstrating a timely, concise, and team-oriented approach. He is always willing to curate content to meet the team's specific needs, even when it requires additional time and effort on his part."
+        </p>
+        <div class="testimonial-author">Andi Tureson</div>
+        <div class="testimonial-role">Account Director @ Future PLC | Media Strategy + Advertising Growth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- LIFE -->
 <section class="section" id="life">
   <div class="container">
@@ -367,5 +543,24 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  // Back to top button functionality
+  const backToTopButton = document.getElementById('backToTop');
+  
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopButton.classList.add('visible');
+    } else {
+      backToTopButton.classList.remove('visible');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
 </body>
 </html>
