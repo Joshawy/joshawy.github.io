@@ -261,33 +261,38 @@ ul{margin:0; padding-left: 18px}
   font-weight: 500;
 }
 
-/* STATS */
+/* STATS (updated for text titles instead of big numbers) */
 .stats{
   margin-top: 44px;
   display:grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
+
 .stat{
-  text-align:center;
-  padding: 26px 18px;
+  text-align: left;                 /* better for paragraph content */
+  padding: 22px 20px 20px;
   border-radius: 26px;
   background: rgba(255,255,255,.55);
-  border: 1px solid rgba(18,24,38,.08);
+  border: 1px solid rgba(210,138,99,.22); /* subtle warm border */
   box-shadow: var(--shadowSoft);
 }
+
 .stat-num{
   font-family: var(--serif);
-  font-size: 42px;
+  font-size: 18px;                  /* title-sized, not giant */
   font-weight: 700;
-  letter-spacing: -0.015em;
-  background: linear-gradient(135deg, var(--accent), rgba(18,24,38,.85));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  margin-bottom: 6px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--accent);             /* keeps the copper tone */
+  margin-bottom: 10px;
 }
-.stat-label{color: var(--muted); font-size: 13px}
+
+.stat-label{
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
 
 /* TIMELINE */
 .timeline{
