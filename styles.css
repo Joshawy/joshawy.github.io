@@ -261,21 +261,22 @@ ul{margin:0; padding-left: 18px}
   font-weight: 500;
 }
 
-.stat{
-  position: relative;
-  text-align:left;
-  padding: 26px 24px;
-  border-radius: 26px;
-  background: rgba(255,255,255,.55);
-  border: 1px solid rgba(210,138,99,.20);
-  box-shadow: 0 10px 30px rgba(18,24,38,.08);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
+.stat-num{
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 
-.stat:hover{
-  transform: translateY(-6px);
-  border-color: rgba(210,138,99,.45);
-  box-shadow: 0 20px 60px rgba(210,138,99,.15);
+  background: linear-gradient(
+    135deg,
+    var(--accent),
+    rgba(18,24,38,.85)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  margin-bottom: 10px;
 }
 
 /* TIMELINE */
