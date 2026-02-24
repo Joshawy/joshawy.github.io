@@ -1032,6 +1032,24 @@
       menuBtn.setAttribute('aria-expanded', 'false');
     }
   });
+
+  // Reveal on scroll (fix: content was invisible without this)
+  const revealEls = document.querySelectorAll('.reveal');
+  const show = (el) => el.classList.add('visible');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          show(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+    revealEls.forEach((el) => io.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealEls.forEach(show);
+  }
 </script>
 </body>
 </html>
