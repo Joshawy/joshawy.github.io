@@ -5,118 +5,621 @@
   <meta content="width=device-width, initial-scale=1" name="viewport"/>
   <title>Joshua Onofrio | B2B Marketing Manager — Systems, Messaging & Growth</title>
   <meta content="B2B Marketing Manager with 9+ years of experience in AI enablement, cold outreach, email campaigns, and sales-aligned execution. Open to full-time remote roles in Canada." name="description"/>
-
-  <!-- Open Graph / Social Media Meta Tags -->
   <meta property="og:title" content="Joshua Onofrio | B2B Marketing Manager"/>
   <meta property="og:description" content="B2B Marketing Manager with 9+ years experience in AI enablement, cold outreach, and multi-channel campaign execution. Based in Kelowna, BC — open to remote roles."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://joshuaonofrio.com"/>
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="assets/favicon.png"/>
 
+  <!-- Fonts: DM Serif Display (editorial) + DM Sans (clean body) -->
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet"/>
-  <link href="styles.css" rel="stylesheet"/>
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
 
   <style>
-    html { scroll-behavior: smooth; }
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --cream:   #F7F3EE;
+      --cream2:  #EDE8E0;
+      --ink:     #1C1917;
+      --ink2:    #44403C;
+      --ink3:    #78716C;
+      --rust:    #B5541E;
+      --rust-lt: #E8C9B7;
+      --white:   #FDFBF8;
+      --border:  rgba(28,25,23,0.1);
 
-    .hero         { background-color: #FAF8F5; }
-    #about        { background-color: #f9f9f9; }
-    #skills       { background-color: #FAF8F5; }
-    #experience   { background-color: #f9f9f9; }
-    #testimonials { background-color: #FAF8F5; }
-    #life         { background-color: #f9f9f9; }
-    #contact      { background-color: #FAF8F5; }
+      --ff-serif: 'DM Serif Display', Georgia, serif;
+      --ff-sans:  'DM Sans', system-ui, sans-serif;
+      --ff-mono:  'DM Mono', monospace;
 
-    .section-card { background-color: transparent; }
-
-    /* Back to top */
-    .back-to-top {
-      position: fixed; bottom: 2rem; right: 2rem;
-      width: 48px; height: 48px;
-      background: #1a1a1a; color: white;
-      border: none; border-radius: 50%;
-      cursor: pointer; opacity: 0; visibility: hidden;
-      transition: all 0.3s ease; z-index: 1000;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      --max:   1100px;
+      --gap:   clamp(1.5rem, 4vw, 3rem);
+      --section-pad: clamp(5rem, 10vw, 8rem);
     }
-    .back-to-top.visible { opacity: 1; visibility: visible; }
-    .back-to-top:hover {
-      background: #333;
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+
+    /* ─── RESET ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: var(--ff-sans);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
     }
-    .back-to-top svg { width: 24px; height: 24px; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
 
-    img { opacity: 0; animation: fadeIn 0.6s ease-in forwards; }
-    @keyframes fadeIn { to { opacity: 1; } }
+    /* ─── SKIP LINK ──────────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -100px; left: 1rem; z-index: 9999;
+      background: var(--ink); color: var(--white);
+      padding: .5rem 1rem; border-radius: 4px; font-size: .875rem;
+    }
+    .skip-link:focus { top: 1rem; }
 
-    .btn { transition: all 0.3s ease; }
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
-    .btn.primary:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.25); }
+    /* ─── CONTAINER ──────────────────────────────────────── */
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gap); }
 
-    /* Testimonials */
-    .testimonials { margin-top: 4rem; }
-    .testimonial-grid {
+    /* ─── HEADER ─────────────────────────────────────────── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(247,243,238,0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .brand {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+    .nav { display: flex; gap: 2rem; }
+    .nav a {
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--ink2);
+      letter-spacing: 0.02em;
+      position: relative;
+      transition: color .2s;
+    }
+    .nav a::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 1px; background: var(--rust);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .nav a:hover { color: var(--rust); }
+    .nav a:hover::after { transform: scaleX(1); }
+
+    /* Mobile menu */
+    .menu-btn {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .menu-btn span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    .hero {
+      padding-top: calc(64px + 6rem);
+      padding-bottom: 6rem;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative grain */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; opacity: .5;
+    }
+
+    /* Big decorative letter */
+    .hero::after {
+      content: 'J';
+      position: absolute; right: -0.1em; top: 50%;
+      transform: translateY(-55%);
+      font-family: var(--ff-serif);
+      font-size: clamp(16rem, 28vw, 26rem);
+      color: var(--cream2);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .hero-inner {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem; margin-top: 2rem;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      align-items: center;
+      position: relative; z-index: 1;
     }
-    .testimonial-card {
-      background: #ffffff;
-      border-left: 4px solid #1a1a1a;
-      padding: 1.5rem; border-radius: 8px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .testimonial-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-    .testimonial-quote {
-      font-style: italic; color: #333;
-      line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem;
-    }
-    .testimonial-author { font-weight: 600; color: #1a1a1a; margin-bottom: 0.25rem; }
-    .testimonial-role { font-size: 0.85rem; color: #666; line-height: 1.4; }
 
-    /* Open-to-work badge */
-    .open-to-work {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: #e8f5e9; color: #2e7d32;
-      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.04em;
-      border-radius: 999px; padding: 0.3rem 0.75rem;
-      margin-bottom: 1rem;
+    /* Photo side */
+    .hero-photo-wrap {
+      position: relative;
     }
-    .open-to-work::before {
-      content: ''; width: 8px; height: 8px;
-      border-radius: 50%; background: #43a047;
+    .hero-photo-frame {
+      position: relative;
       display: inline-block;
     }
+    .hero-photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 16px; left: 16px;
+      right: -16px; bottom: -16px;
+      border: 2px solid var(--rust-lt);
+      border-radius: 4px;
+      z-index: 0;
+    }
+    .hero-photo-frame img {
+      position: relative; z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 4px;
+      filter: saturate(0.9);
+      opacity: 0;
+      animation: fadeUp .8s .2s ease forwards;
+    }
 
-    /* Gallery caption */
-    .gallery-caption {
-      font-size: 0.88rem; color: #666;
-      margin-top: 0.5rem; text-align: center;
+    /* Text side */
+    .hero-copy {
+      opacity: 0;
+      animation: fadeUp .8s .4s ease forwards;
+    }
+
+    .open-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: #E6F2EC; color: #276042;
+      font-size: .75rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase;
+      border-radius: 999px; padding: .3rem .85rem;
+      margin-bottom: 1.5rem;
+    }
+    .open-badge::before {
+      content: '';
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #3A9E65;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; }
+      50% { opacity: .4; }
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: .75rem;
+    }
+    .hero-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(3rem, 6vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title em {
       font-style: italic;
+      color: var(--rust);
     }
-    figure { margin: 0; }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+      max-width: 48ch;
+    }
+    .hero-meta {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+    .hero-meta a, .hero-meta span.loc {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-size: .875rem; color: var(--ink2);
+      font-weight: 500;
+      transition: color .2s;
+    }
+    .hero-meta a:hover { color: var(--rust); }
+    .hero-meta .sep { color: var(--border); font-size: 1.2rem; }
+    .hero-meta svg { width: 15px; height: 15px; opacity: .6; }
 
-    /* Highlight stat labels */
-    .stat-num {
+    /* ─── SECTION BASE ───────────────────────────────────── */
+    .section {
+      padding: var(--section-pad) 0;
+    }
+    .section--alt { background: var(--white); }
+
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+    .section-sub {
       font-size: 1rem;
-      font-weight: 700;
-      color: #1a1a1a;
-      margin-bottom: 0.4rem;
+      color: var(--ink3);
+      max-width: 55ch;
+      line-height: 1.65;
+      margin-bottom: 3rem;
     }
-    .stat-label { color: #555; font-size: 0.9rem; line-height: 1.55; }
 
-    @media (max-width: 768px) {
-      .back-to-top { bottom: 1rem; right: 1rem; width: 44px; height: 44px; }
-      .testimonial-grid { grid-template-columns: 1fr; }
+    /* ─── ABOUT ──────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(2rem, 5vw, 6rem);
+      align-items: start;
+    }
+    .about-sidebar {
+      position: sticky; top: 80px;
+    }
+    .about-sidebar .section-title { margin-bottom: .5rem; }
+
+    .about-body p {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .about-body p:last-of-type { margin-bottom: 0; }
+    .sig {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.3rem;
+      color: var(--rust);
+      margin-top: 1.5rem;
+    }
+    .ps {
+      font-size: .875rem;
+      color: var(--ink3);
+      margin-top: .75rem;
+      padding-top: .75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ─── SKILLS ─────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .skill-block {
+      padding: 1.75rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .section--alt .skill-block { background: var(--white); }
+    .skill-block-label {
+      font-family: var(--ff-mono);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 1rem;
+    }
+    .chips {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+    }
+    .chip {
+      font-size: .8rem;
+      padding: .3rem .7rem;
+      border-radius: 4px;
+      background: var(--cream2);
+      color: var(--ink2);
+      border: 1px solid var(--border);
+      line-height: 1.3;
+    }
+    .chip-tool {
+      background: transparent;
+      border-color: var(--rust-lt);
+      color: var(--rust);
+    }
+
+    /* ─── EXPERIENCE ─────────────────────────────────────── */
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 2.5rem;
+      padding-bottom: 3rem;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 160px;
+      top: 8px; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+    .timeline-item:last-child::before { display: none; }
+    .timeline-dot {
+      position: absolute;
+      left: calc(160px - 5px);
+      top: 8px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background: var(--rust);
+      border: 2px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--rust-lt);
+    }
+    .timeline-aside {
+      text-align: right;
+      padding-top: 2px;
+    }
+    .timeline-date {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      color: var(--ink3);
+      letter-spacing: .05em;
+      line-height: 1.5;
+    }
+    .timeline-org {
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--rust);
+      margin-top: .35rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .timeline-body { padding-left: 2rem; }
+    .timeline-role {
+      font-family: var(--ff-serif);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: .75rem;
+      letter-spacing: -0.01em;
+    }
+    .timeline-desc {
+      font-size: .9rem;
+      color: var(--ink2);
+      line-height: 1.7;
+    }
+    .timeline-desc li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: .4rem;
+    }
+    .timeline-desc li::before {
+      content: '–';
+      position: absolute; left: 0;
+      color: var(--rust);
+    }
+
+    /* ─── TESTIMONIALS ───────────────────────────────────── */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .testi-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .section--alt .testi-card { background: var(--white); }
+    .testi-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(28,25,23,.08);
+    }
+    .testi-quote-mark {
+      font-family: var(--ff-serif);
+      font-size: 4rem;
+      line-height: .6;
+      color: var(--rust-lt);
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .testi-text {
+      font-size: .9rem;
+      color: var(--ink2);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.5rem;
+    }
+    .testi-author { font-weight: 600; font-size: .9rem; color: var(--ink); }
+    .testi-role { font-size: .8rem; color: var(--ink3); margin-top: .2rem; line-height: 1.4; }
+
+    /* ─── LIFE ───────────────────────────────────────────── */
+    .life-intro {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      max-width: 55ch;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 1rem;
+    }
+    .gallery figure {
+      position: relative; overflow: hidden;
+      border-radius: 8px;
+      background: var(--cream2);
+    }
+    .gallery figure img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 1.25rem 1rem .75rem;
+      background: linear-gradient(transparent, rgba(28,25,23,.55));
+      color: #fff;
+      font-size: .8rem;
+      font-style: italic;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .gallery figure:hover .gallery-caption { opacity: 1; }
+
+    /* ─── CONTACT ────────────────────────────────────────── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 6vw, 6rem);
+      align-items: start;
+    }
+    .contact-copy .section-title { margin-bottom: 1rem; }
+    .contact-closing {
+      font-size: 1.05rem;
+      color: var(--ink2);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+      max-width: 44ch;
+    }
+    .contact-sig {
+      font-family: var(--ff-serif);
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--rust);
+    }
+    .contact-links {
+      display: flex; flex-direction: column; gap: 1rem;
+      padding-top: .5rem;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: .95rem;
+      font-weight: 500;
+      color: var(--ink);
+      transition: all .2s;
+      cursor: pointer;
+    }
+    .section--alt .contact-link { background: var(--white); }
+    .contact-link:hover {
+      border-color: var(--rust);
+      color: var(--rust);
+      transform: translateX(4px);
+    }
+    .contact-link-icon {
+      width: 36px; height: 36px;
+      border-radius: 6px;
+      background: var(--cream2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      transition: background .2s;
+    }
+    .contact-link:hover .contact-link-icon { background: var(--rust-lt); }
+    .contact-link svg { width: 16px; height: 16px; }
+    .contact-location {
+      display: flex; align-items: center; gap: .4rem;
+      font-size: .8rem; color: var(--ink3);
+      margin-top: 1.25rem;
+    }
+    .contact-location svg { width: 13px; height: 13px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    .footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.45);
+      padding: 1.75rem 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem;
+      font-family: var(--ff-mono);
+    }
+    .footer-inner a { color: rgba(255,255,255,.65); }
+    .footer-inner a:hover { color: var(--rust-lt); }
+
+    /* ─── BACK TO TOP ────────────────────────────────────── */
+    .back-to-top {
+      position: fixed; bottom: 2rem; right: 2rem;
+      width: 44px; height: 44px;
+      background: var(--ink); color: white;
+      border: none; border-radius: 50%;
+      cursor: pointer; opacity: 0; visibility: hidden;
+      transition: all .3s; z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    .back-to-top:hover { background: var(--rust); transform: translateY(-2px); }
+    .back-to-top svg { width: 18px; height: 18px; }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero::after { display: none; }
+      .hero-photo-frame { max-width: 280px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-sidebar { position: static; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: .5rem; }
+      .timeline-item::before { display: none; }
+      .timeline-aside { text-align: left; }
+      .timeline-dot { display: none; }
+      .timeline-body { padding-left: 0; }
+      .contact-wrap { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .nav { display: none; }
+      .menu-btn { display: flex; }
+      .nav.open {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 64px 0 0 0;
+        background: var(--cream);
+        align-items: center; justify-content: center;
+        gap: 2rem; font-size: 1.2rem;
+      }
+      .skills-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; gap: .5rem; text-align: center; }
     }
   </style>
 </head>
@@ -125,15 +628,15 @@
 <a class="skip-link" href="#main">Skip to content</a>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M12 19V5M5 12l7-7 7 7"/>
   </svg>
 </button>
 
 <header class="site-header">
   <div class="container header-inner">
-    <div class="brand">JO</div>
-    <button aria-controls="site-nav" aria-expanded="false" aria-label="Open menu" class="menu-btn">
+    <div class="brand">Joshua Onofrio</div>
+    <button class="menu-btn" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
     <nav class="nav" id="site-nav">
@@ -148,182 +651,138 @@
 
 <main id="main">
 
-<!-- HERO -->
+<!-- ── HERO ───────────────────────────────────────────────── -->
 <section class="hero">
   <div class="container hero-inner">
 
-    <div class="hero-card">
-      <div class="hero-photo">
-        <img alt="Joshua Onofrio headshot" src="assets/headshot.jpg" onerror="this.style.display='none'"/>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-frame">
+        <img alt="Joshua Onofrio" src="assets/headshot.jpg" onerror="this.style.display='none'"/>
       </div>
     </div>
 
     <div class="hero-copy">
-      <!-- FIX: consistent pill label matching page title -->
-      <div class="pill">Marketing, systems, and writing.</div>
-
+      <div class="open-badge">Open to Work</div>
+      <p class="hero-eyebrow">Marketing · Systems · Writing</p>
       <h1 class="hero-title">
-        Joshua <span class="accent">Onofrio</span>
+        Joshua<br><em>Onofrio</em>
       </h1>
-
-      <p class="hero-sub">
-        I build messaging and systems that create momentum.
-      </p>
-
-      <p class="hero-sub" style="margin-top: 1rem;">
-        I'm drawn to building systems that make things run smoother than they did yesterday. I like starting with a fast version, learning from what breaks, and refining until it works the way it should. Most of my best work comes from improving in motion — not waiting for perfect.
-      </p>
+      <p class="hero-sub">I build messaging and systems that create momentum.</p>
+      <p class="hero-sub">I'm drawn to making things run smoother than they did yesterday — starting fast, learning from what breaks, and refining until it works the way it should.</p>
 
       <div class="hero-meta">
-        <a aria-label="Email Joshua" class="meta" href="/cdn-cgi/l/email-protection#5d37322e35283c3233323b2f34321d3a303c3431733e3230">
-          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24" style="color: #C9876C;">
-            <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-            <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-          </svg>
-          <span class="__cf_email__" data-cfemail="d0babfa3b8a5b1bfbebfb6a2b9bf90b7bdb1b9bcfeb3bfbd">[email&#160;protected]</span>
+        <a href="mailto:joshuaonofrio@gmail.com" aria-label="Email Joshua">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+          joshuaonofrio@gmail.com
         </a>
-        <span aria-hidden="true" class="dot">•</span>
-        <a class="meta" href="https://www.linkedin.com/in/joshuaonofrio/" rel="noreferrer" target="_blank">
-          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24" style="color: #C9876C;">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2.2A4.5 4.5 0 0 1 16 8z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-            <path d="M2 9h4v12H2z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-            <path d="M4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
+        <span class="sep">·</span>
+        <a href="https://www.linkedin.com/in/joshuaonofrio/" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2.2"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           LinkedIn
         </a>
-        <span aria-hidden="true" class="dot">•</span>
-        <span class="meta">
-          <svg aria-hidden="true" class="icon" viewBox="0 0 24 24" style="color: #C9876C;">
-            <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-            <path d="M12 10.5a2.5 2.5 0 1 0 0 .01z" fill="none" stroke="currentColor" stroke-width="2"></path>
-          </svg>
+        <span class="sep">·</span>
+        <span class="loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
           Kelowna, BC
         </span>
       </div>
     </div>
+
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="section section-card" id="about">
+<!-- ── ABOUT ───────────────────────────────────────────────── -->
+<section class="section section--alt" id="about">
   <div class="container">
-    <div class="section-head">
-      <h2>About Me</h2>
-    </div>
+    <div class="about-grid">
 
-    <div class="about-text">
-      <p>
-        I work across marketing, AI enablement, outreach, and campaign execution — but what really interests me is how everything connects. I'm most at home when I'm figuring out how messaging, systems, and people align to make something actually work.
-      </p>
-      <p>
-        I've collaborated with small founder-led teams and larger organizations, and I enjoy adapting strategy to fit the reality of the situation — the budget, the bandwidth, the constraints. Different environments require different approaches, and that challenge keeps things interesting.
-      </p>
-      <p>
-        I love building and experimenting. One of my favorite hobbies is playing board games. I'm usually the one reading the rulebook — not because I have to, but because I genuinely enjoy understanding how the system works, spotting the strategy, and seeing how all the pieces interact.
-      </p>
-      <p>
-        That same mindset shows up in my work. I like breaking problems down, testing ideas quickly, learning from what doesn't work, and refining until things click. There's something satisfying about turning complexity into clarity and helping others see how it all fits together.
-      </p>
-      <p>And yes — I still appreciate a good cat meme. I'm only human.</p>
-      <p class="signature">— Joshua</p>
-      <p class="ps" style="margin-bottom: 4rem;">
-        <strong>PS:</strong> You'll find my skill set below. It's always evolving — learning never really stops.
-      </p>
+      <div class="about-sidebar reveal">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">The person behind the work.</h2>
+      </div>
+
+      <div class="about-body reveal">
+        <p>I work across marketing, AI enablement, outreach, and campaign execution — but what really interests me is how everything connects. I'm most at home when I'm figuring out how messaging, systems, and people align to make something actually work.</p>
+        <p>I've collaborated with small founder-led teams and larger organizations, and I enjoy adapting strategy to fit the reality of the situation — the budget, the bandwidth, the constraints. Different environments require different approaches, and that challenge keeps things interesting.</p>
+        <p>I love building and experimenting. One of my favorite hobbies is playing board games. I'm usually the one reading the rulebook — not because I have to, but because I genuinely enjoy understanding how the system works, spotting the strategy, and seeing how all the pieces interact.</p>
+        <p>That same mindset shows up in my work. I like breaking problems down, testing ideas quickly, learning from what doesn't work, and refining until things click. There's something satisfying about turning complexity into clarity and helping others see how it all fits together.</p>
+        <p>And yes — I still appreciate a good cat meme. I'm only human.</p>
+        <p class="sig">— Joshua</p>
+        <p class="ps"><strong>PS:</strong> You'll find my skill set below. It's always evolving — learning never really stops.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
+<!-- ── SKILLS ──────────────────────────────────────────────── -->
 <section class="section" id="skills">
   <div class="container">
+    <p class="section-label reveal">What I Bring</p>
+    <div class="skills-grid reveal">
 
-    <div class="two-col">
-      <div class="col">
-        <h3><span class="rule"></span>Core Skills</h3>
+      <div class="skill-block">
+        <div class="skill-block-label">Core Skills</div>
         <div class="chips">
           <span class="chip">AI Enablement</span>
           <span class="chip">Cold Outreach</span>
           <span class="chip">Email &amp; Lifecycle Marketing</span>
-          <span class="chip">Marketing Automation &amp; Lead Management</span>
-          <span class="chip">Campaign Planning, Execution &amp; Optimization</span>
-          <span class="chip">Content Promotion &amp; Newsletter Programs</span>
-          <span class="chip">Marketing Collateral &amp; Media Kits</span>
+          <span class="chip">Marketing Automation</span>
+          <span class="chip">Lead Management</span>
+          <span class="chip">Campaign Planning &amp; Execution</span>
+          <span class="chip">Newsletter Programs</span>
+          <span class="chip">Media Kits</span>
         </div>
       </div>
 
-      <div class="col">
-        <h3><span class="rule"></span>Tools &amp; Platforms</h3>
+      <div class="skill-block">
+        <div class="skill-block-label">Tools &amp; Platforms</div>
         <div class="chips">
-          <span class="chip chip-soft">Marketo</span>
-          <span class="chip chip-soft">Salesforce</span>
-          <span class="chip chip-soft">HubSpot</span>
-          <span class="chip chip-soft">Asana</span>
-          <span class="chip chip-soft">WordPress</span>
-          <span class="chip chip-soft">LinkedIn Campaign Manager</span>
-          <span class="chip chip-soft">Adobe Acrobat</span>
-          <span class="chip chip-soft">Google Workspace</span>
-          <span class="chip chip-soft">ChatGPT &amp; Claude</span>
+          <span class="chip chip-tool">Marketo</span>
+          <span class="chip chip-tool">Salesforce</span>
+          <span class="chip chip-tool">HubSpot</span>
+          <span class="chip chip-tool">Asana</span>
+          <span class="chip chip-tool">WordPress</span>
+          <span class="chip chip-tool">LinkedIn Campaign Manager</span>
+          <span class="chip chip-tool">Google Workspace</span>
+          <span class="chip chip-tool">ChatGPT &amp; Claude</span>
         </div>
       </div>
-    </div>
 
-    <div class="two-col" style="margin-top: 3rem;">
-      <div class="col">
-        <h3><span class="rule"></span>Experience Range</h3>
+      <div class="skill-block">
+        <div class="skill-block-label">Experience Range</div>
         <div class="chips">
-          <span class="chip">Sole Proprietor &amp; Startup Environments</span>
-          <span class="chip">Small-to-Medium Agencies (30–50 employees)</span>
-          <span class="chip">Large Corporate Enterprises (Fortune 500)</span>
+          <span class="chip">Startups &amp; Sole Proprietor</span>
+          <span class="chip">Agencies (30–50 people)</span>
+          <span class="chip">Fortune 500 Enterprises</span>
         </div>
+        <p style="font-size:.85rem; color:var(--ink3); margin-top:1rem; line-height:1.6;">
+          Across all of them, the core work stays the same: understand the reality of the situation, then build something that actually fits it.
+        </p>
       </div>
-    </div>
 
-   <div class="stats">
-  <div class="stat">
-    <div class="stat-num">Across Team Sizes</div>
-    <div class="stat-label">
-      I've worked with small founder-led teams and larger organizations, adjusting strategy to match how people actually operate.
     </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-num">Systems Built & Rebuilt</div>
-    <div class="stat-label">
-      I've created processes from scratch and stepped into ones that weren't working — simplifying friction and improving how teams experience the system.
-    </div>
-  </div>
-
-  <div class="stat">
-    <div class="stat-num">Sales-Aligned Execution</div>
-    <div class="stat-label">
-      Marketing shouldn't operate in isolation. I partner closely with sales to ensure messaging supports real conversations and forward movement.
-    </div>
-  </div>
-</div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
+<!-- ── EXPERIENCE ──────────────────────────────────────────── -->
+<section class="section section--alt" id="experience">
   <div class="container">
-
-    <div class="section-head">
-      <h2>Experience</h2>
-      <p>Hands-on experience delivering repeatable, multi-channel B2B marketing programs across multiple industries.</p>
-    </div>
+    <p class="section-label reveal">Experience</p>
+    <h2 class="section-title reveal">Where I've worked.</h2>
+    <p class="section-sub reveal">Hands-on experience delivering repeatable, multi-channel B2B marketing programs across multiple industries.</p>
 
     <div class="timeline">
-      <div aria-hidden="true" class="line"></div>
 
-      <article class="role role-left">
-        <div class="role-card">
-          <div class="role-meta">
-            <span class="badge">Remote — Full-time</span>
-            <span class="date">Oct 2022 – Feb 2026</span>
-          </div>
-          <h3 class="role-title">Marketing Manager</h3>
-          <div class="role-org">Future PLC</div>
-          <ul class="role-bullets">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-aside">
+          <div class="timeline-date">Oct 2022<br>Feb 2026</div>
+          <div class="timeline-org">Future PLC</div>
+        </div>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Marketing Manager</h3>
+          <ul class="timeline-desc">
             <li>Partnered with multiple sales teams to develop targeted email campaigns and marketing collateral</li>
             <li>Built and hosted comprehensive media kits for client and partner enablement</li>
             <li>Published blogs and articles across multiple brand properties</li>
@@ -331,154 +790,147 @@
             <li>Managed Salesforce CRM campaigns including lead routing, contact tracking and campaign reporting</li>
           </ul>
         </div>
-      </article>
+      </div>
 
-      <article class="role role-right">
-        <div class="role-card">
-          <div class="role-meta">
-            <span class="badge">Remote — Full-time</span>
-            <span class="date">Oct 2020 – Oct 2022</span>
-          </div>
-          <h3 class="role-title">Marketing &amp; Sales Development</h3>
-          <div class="role-org">ActualTech Media</div>
-          <ul class="role-bullets">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-aside">
+          <div class="timeline-date">Oct 2020<br>Oct 2022</div>
+          <div class="timeline-org">ActualTech Media</div>
+        </div>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Marketing &amp; Sales Development</h3>
+          <ul class="timeline-desc">
             <li>Executed high-volume cold email outreach campaigns driving new business opportunities</li>
-            <li>Booked qualified meetings for enterprise sales team through targeted prospecting and engagement</li>
+            <li>Booked qualified meetings for enterprise sales team through targeted prospecting</li>
             <li>Designed and optimized email sequences across multiple campaign types and audience segments</li>
             <li>Created conversion-focused copy for outreach campaigns, landing pages and marketing assets</li>
             <li>Managed CRM operations and workflow automation in HubSpot</li>
             <li>Delivered weekly marketing emails supporting lead nurture and customer engagement programs</li>
           </ul>
         </div>
-      </article>
+      </div>
 
-      <article class="role role-left">
-        <div class="role-card">
-          <div class="role-meta">
-            <span class="badge">Remote — Full-time</span>
-            <span class="date">Jan 2017 – Sep 2020</span>
-          </div>
-          <h3 class="role-title">Sales &amp; Marketing Partner</h3>
-          <div class="role-org">EGL Digital Marketing</div>
-          <ul class="role-bullets">
-            <li>Executed digital and social marketing initiatives supporting brand awareness and inbound lead generation</li>
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-aside">
+          <div class="timeline-date">Jan 2017<br>Sep 2020</div>
+          <div class="timeline-org">EGL Digital Marketing</div>
+        </div>
+        <div class="timeline-body">
+          <h3 class="timeline-role">Sales &amp; Marketing Partner</h3>
+          <ul class="timeline-desc">
+            <li>Executed digital and social marketing initiatives supporting brand awareness and lead generation</li>
             <li>Conducted lead qualification conversations to assess prospect fit and buying readiness</li>
             <li>Developed campaign copy, collateral, and promotional assets across digital channels</li>
             <li>Coordinated and oversaw output from a small team of FTEs and contractors</li>
           </ul>
         </div>
-      </article>
+      </div>
 
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="section section-card" id="testimonials">
+<!-- ── TESTIMONIALS ────────────────────────────────────────── -->
+<section class="section" id="testimonials">
   <div class="container">
-    <div class="section-head">
-      <h2>What People Say</h2>
-      <p>Recommendations from colleagues and clients I've had the pleasure of working with.</p>
-    </div>
+    <p class="section-label reveal">What People Say</p>
+    <h2 class="section-title reveal">In their own words.</h2>
 
-    <div class="testimonial-grid">
-      <div class="testimonial-card">
-        <p class="testimonial-quote">
-          "I had the absolute pleasure of working with Joshua for almost 5 years at ActualTech Media and then with Future B2B. His writing skills are second-to-none. Joshua writes some of the best marketing, outreach, outbound or inbound copy I have ever read. He can turn what I thought was pretty good copy, into stellar, highly readable, and most importantly, high converting copy. I have absolutely no reservations in recommending Joshua to any and all B2B organizations with a marketing department - Joshua will knock your socks off!"
-        </p>
-        <div class="testimonial-author">Ainsley Muller</div>
-        <div class="testimonial-role">Marketing Director | Growth &amp; Demand Gen Leader | B2B Tech</div>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">I had the absolute pleasure of working with Joshua for almost 5 years. His writing skills are second-to-none. He can turn what I thought was pretty good copy, into stellar, highly readable, and most importantly, high converting copy. I have absolutely no reservations in recommending Joshua to any and all B2B organizations — Joshua will knock your socks off.</p>
+        <div class="testi-author">Ainsley Muller</div>
+        <div class="testi-role">Marketing Director | Growth &amp; Demand Gen Leader | B2B Tech</div>
       </div>
 
-      <div class="testimonial-card">
-        <p class="testimonial-quote">
-          "I had the opportunity to work closely with Joshua and consistently found him to be a highly capable, dependable, and thoughtful professional. Joshua brings a strong sense of ownership to his work, paired with clear communication and follow-through. He approaches challenges strategically, balances execution with accountability, and clearly communicates throughout the process. His follow-through makes him someone leaders can rely on, and I would confidently recommend him to any organization looking for a steady, results-driven well-rounded marketer."
-        </p>
-        <div class="testimonial-author">Shana Murik</div>
-        <div class="testimonial-role">Marketing &amp; Audience Growth Leader | B2B Digital Strategy</div>
+      <div class="testi-card reveal">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">Joshua brings a strong sense of ownership to his work, paired with clear communication and follow-through. He approaches challenges strategically, balances execution with accountability, and clearly communicates throughout the process. His follow-through makes him someone leaders can rely on.</p>
+        <div class="testi-author">Shana Murik</div>
+        <div class="testi-role">Marketing &amp; Audience Growth Leader | B2B Digital Strategy</div>
       </div>
 
-      <div class="testimonial-card">
-        <p class="testimonial-quote">
-          "He was instrumental in producing email copies and sharing reports, consistently demonstrating a timely, concise, and team-oriented approach. He is always willing to curate content to meet the team's specific needs, even when it requires additional time and effort on his part."
-        </p>
-        <div class="testimonial-author">Andi Tureson</div>
-        <div class="testimonial-role">Account Director @ Future PLC | Media Strategy + Advertising Growth</div>
+      <div class="testi-card reveal">
+        <span class="testi-quote-mark">"</span>
+        <p class="testi-text">He was instrumental in producing email copies and sharing reports, consistently demonstrating a timely, concise, and team-oriented approach. He is always willing to curate content to meet the team's specific needs, even when it requires additional time and effort on his part.</p>
+        <div class="testi-author">Andi Tureson</div>
+        <div class="testi-role">Account Director @ Future PLC | Media Strategy + Advertising Growth</div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- LIFE -->
-<section class="section" id="life">
+<!-- ── LIFE ────────────────────────────────────────────────── -->
+<section class="section section--alt" id="life">
   <div class="container">
-    <div class="section-head">
-      <h2>Life Beyond Work</h2>
-      <p>When I'm not optimizing campaigns, you'll find me exploring new places and making memories around the world.</p>
-    </div>
+    <p class="section-label reveal">Life Beyond Work</p>
+    <h2 class="section-title reveal">There's more to the picture.</h2>
+    <p class="life-intro reveal">When I'm not optimizing campaigns, you'll find me exploring new places and making memories around the world. Travel keeps me curious — and curious is the best headspace to work from.</p>
 
-      <div class="gallery">
-        <figure class="gallery-card">
-          <img alt="Photo in front of Starbucks window" src="assets/life-starbucks.jpg" onerror="this.style.display='none'"/>
-        </figure>
-        <figure class="gallery-card">
-          <img alt="Photo near the Colosseum" src="assets/life-colosseum.jpg" onerror="this.style.display='none'"/>
-        </figure>
-      </div>
+    <div class="gallery reveal">
+      <figure class="gallery-card">
+        <img alt="Coffee shop vibes" src="assets/life-starbucks.jpg" onerror="this.style.display='none'"/>
+        <div class="gallery-caption">Finding good coffee, everywhere I go</div>
+      </figure>
+      <figure class="gallery-card">
+        <img alt="Near the Colosseum, Rome" src="assets/life-colosseum.jpg" onerror="this.style.display='none'"/>
+        <div class="gallery-caption">Rome — proof that good systems last millennia</div>
+      </figure>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="section section-card" id="contact">
+<!-- ── CONTACT ─────────────────────────────────────────────── -->
+<section class="section" id="contact">
   <div class="container">
-    <div class="section-head">
-      <h2>Find Me Here</h2>
-      <p>Let's connect and discuss new opportunities, marketing strategies or if you need a board gmae recommendation!</p>
+    <div class="contact-wrap">
+
+      <div class="contact-copy reveal">
+        <p class="section-label">Let's Talk</p>
+        <h2 class="section-title">The best conversations start somewhere.</h2>
+        <p class="contact-closing">If something here resonated — whether you're hiring, building something, or just want to talk strategy — I'm easy to reach and even easier to talk to.</p>
+        <p class="contact-closing">No pitch needed. Just say hi.</p>
+        <p class="contact-sig">— Joshua</p>
+      </div>
+
+      <div class="contact-links reveal">
+        <a class="contact-link" href="mailto:joshuaonofrio@gmail.com">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
+          </div>
+          Email Me
+        </a>
+        <a class="contact-link" href="https://www.linkedin.com/in/joshuaonofrio/" target="_blank" rel="noreferrer">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4V9h4v2.2"/><path d="M2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          Connect on LinkedIn
+        </a>
+        <a class="contact-link" href="tel:+17787888373">
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 2-2 4-4 4C9 22 2 15 2 6c0-2 2-4 4-4z"/></svg>
+          </div>
+          778.788.8373
+        </a>
+        <a class="contact-link" href="Joshua_Onofrio.pdf" target="_blank" rel="noopener" download>
+          <div class="contact-link-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+          </div>
+          Download Resume (PDF)
+        </a>
+
+        <div class="contact-location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          Based in Kelowna, BC — Full-Time Remote (Canada)
+        </div>
+      </div>
+
     </div>
-
-    <div class="cta">
-      <a class="btn primary" href="/cdn-cgi/l/email-protection#056f6a766d70646a6b6a63776c6a456268646c692b666a68">
-        <svg aria-hidden="true" class="icon" viewBox="0 0 24 24">
-          <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-          <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-        Email Me
-      </a>
-
-      <a class="btn" href="https://www.linkedin.com/in/joshuaonofrio/" rel="noreferrer" target="_blank">
-        <svg aria-hidden="true" class="icon" viewBox="0 0 24 24">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4V9h4v2.2A4.5 4.5 0 0 1 16 8z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-          <path d="M2 9h4v12H2z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-          <path d="M4 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4z" fill="none" stroke="currentColor" stroke-width="2"></path>
-        </svg>
-        LinkedIn
-      </a>
-
-      <a class="btn" href="tel:+17787888373">
-        <svg aria-hidden="true" class="icon" viewBox="0 0 24 24">
-          <path d="M6 2h4l2 5-3 2c1 3 3 5 6 6l2-3 5 2v4c0 2-2 4-4 4C9 22 2 15 2 6c0-2 2-4 4-4z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-        </svg>
-        778.788.8373
-      </a>
-
-      <a class="btn" href="Joshua_Onofrio.pdf" target="_blank" rel="noopener" download>
-        <svg aria-hidden="true" class="icon" viewBox="0 0 24 24">
-          <path d="M12 3v12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M7 10l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M5 21h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Resume (PDF)
-      </a>
-    </div>
-
-    <div class="location">
-      <svg aria-hidden="true" class="icon" viewBox="0 0 24 24">
-        <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path>
-        <path d="M12 10.5a2.5 2.5 0 1 0 0 .01z" fill="none" stroke="currentColor" stroke-width="2"></path>
-      </svg>
-      Based in Kelowna, BC — Full-Time Remote (Canada)
-    </div>
-
   </div>
 </section>
 
@@ -487,15 +939,46 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div>© <span id="year"></span> Joshua Onofrio. All rights reserved.</div>
-    <div class="footer-right">B2B Marketing Manager — Kelowna, BC</div>
+    <div>B2B Marketing Manager — Kelowna, BC</div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 <script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // Back to top
-  const backToTopButton = document.getElementById('backToTop');
+  const btn = document.getElementById('backToTop');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTopButton.classList.add('visible');
-    } el
+    btn.classList.toggle('visible', window.scrollY > 400);
+  });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Mobile menu
+  const menuBtn = document.querySelector('.menu-btn');
+  const nav = document.getElementById('site-nav');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      nav.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', false);
+    });
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
