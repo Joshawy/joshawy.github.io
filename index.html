@@ -144,7 +144,7 @@
 
     .hero-inner {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 3fr;
       gap: var(--gap);
       align-items: center;
       position: relative; z-index: 1;
@@ -170,10 +170,10 @@
    .hero-photo-frame img {
   position: relative; z-index: 1;
   width: 100%;
-  max-width: 260px;
-  aspect-ratio: 3/4;
+  max-width: 280px;
+  aspect-ratio: 1/1;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 15%;
   transform: scale(1);
   border-radius: 20px;
   filter: saturate(1);
@@ -345,21 +345,43 @@
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      gap: 1.5rem;
       margin-top: 3rem;
       padding-top: 2.5rem;
       border-top: 1px solid var(--border);
     }
+    .stat {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .stat:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(28,25,23,0.08);
+    }
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 1.5rem; right: 1.5rem;
+      height: 2px;
+      background: var(--rust-lt);
+      border-radius: 0 0 2px 2px;
+    }
     .stat-num {
-      font-size: .95rem;
+      font-family: var(--ff-serif);
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--ink);
-      margin-bottom: .5rem;
+      margin-bottom: .65rem;
+      letter-spacing: -0.01em;
     }
     .stat-label {
       font-size: .875rem;
       color: var(--ink3);
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     /* ─── BUTTONS / CTA ──────────────────────────────────── */
@@ -673,7 +695,7 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .two-col { grid-template-columns: 1fr; }
-      .stats { grid-template-columns: 1fr; gap: 1.5rem; }
+      .stats { grid-template-columns: 1fr; gap: 1rem; }
       .timeline-item { grid-template-columns: 1fr; gap: .5rem; }
       .timeline-item::before { display: none; }
       .timeline-aside { text-align: left; }
@@ -743,9 +765,9 @@
       <p class="hero-sub">I'm drawn to making things run smoother than they did yesterday — starting fast, learning from what breaks, and refining until it works the way it should.</p>
 
       <div class="hero-meta">
-        <a href="mailto:joshuaonofrio@gmail.com" aria-label="Email Joshua">
+        <a href="/cdn-cgi/l/email-protection#274d48544f524648494841554e4867404a464e4b0944484a" aria-label="Email Joshua">
           <svg viewBox="0 0 24 24" fill="none" stroke="#C9876C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
-          joshuaonofrio@gmail.com
+          <span class="__cf_email__" data-cfemail="d5bfbaa6bda0b4babbbab3a7bcba95b2b8b4bcb9fbb6bab8">[email&#160;protected]</span>
         </a>
         <span class="sep">·</span>
         <a href="https://www.linkedin.com/in/joshuaonofrio/" target="_blank" rel="noreferrer">
@@ -979,7 +1001,7 @@
     </div>
 
     <div class="cta reveal">
-      <a class="btn primary" href="mailto:joshuaonofrio@gmail.com">
+      <a class="btn primary" href="/cdn-cgi/l/email-protection#2a404559425f4b4544454c5843456a4d474b434604494547">
         <svg aria-hidden="true" class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>
         Email Me
       </a>
@@ -1013,7 +1035,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1047,7 +1069,7 @@
     }
   });
 
-  // Reveal on scroll (fix: content was invisible without this)
+  // Reveal on scroll
   const revealEls = document.querySelectorAll('.reveal');
   const show = (el) => el.classList.add('visible');
   if ('IntersectionObserver' in window) {
@@ -1058,8 +1080,8 @@
           io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
-    revealEls.forEach((el) => io.observe(el));
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => io.observe(el));
   } else {
     // Fallback for older browsers
     revealEls.forEach(show);
